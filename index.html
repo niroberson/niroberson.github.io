@@ -1,17 +1,28 @@
+<!DOCTYPE html>
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="index.css">
 	<script src="index.js"></script>
 	<script src=" http://code.jquery.com/jquery-2.1.3.min.js"></script>
+	<script src="cytoscape.min.js"></script>
+	<script src="graph_menu.js"></script>
+	 <meta charset="UTF-8"> 
 </head>
 
-<a href="#" onclick="toggleVisibility('about');">About</a>
+<body>
+<div id="nav">
+	<a href="#" id="nav-button" onclick="toggleVisibility('Projects');"> Projects</a>
+	<a href="#" id="nav-button" onclick="toggleVisibility('about');">About</a>
+</div>
 
-<a href="#" onclick="toggleVisibility('products');"> Products</a>
+<div id="about" class="section">
+	Hi! I'm Nathan, a software developer and data scientist in training. Welcome to my page, check out some of my projects.
+</div>
 
-<div id="about" class="section">about section</div>
-<div id="products" class="section">products section</div>
+<div id="projects" class="section"> Here is where all of my projects will go!</div>
 
+<div id="cy"></div>
 
 </body>
+
 </html>
