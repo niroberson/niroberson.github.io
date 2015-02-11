@@ -14,30 +14,24 @@ var cy = cytoscape({
         'content': 'data(id)',
         'border-color': '#000',
         'border-width': 3,
-        'border-opacity': 0.5
-      })
-    .selector('.eating')
-      .css({
-        'border-color': 'red'
-      })
-    .selector('.eater')
-      .css({
-        'border-width': 9
+        'border-opacity': 0.8,
+        'color': '#24BF0F'
       })
     .selector('edge')
       .css({
-        'width': 6,
+        'width': 2,
         'target-arrow-shape': 'triangle',
         'line-color': '#ffaaaa',
         'target-arrow-color': '#ffaaaa'
       })
     .selector('#projects')
       .css({
-        'background-image': 'https://farm8.staticflickr.com/7272/7633179468_3e19e45a0c_b.jpg'
+        'background-image': 'https://farm8.staticflickr.com/7272/7633179468_3e19e45a0c_b.jpg',
+
       })
     .selector('#about')
       .css({
-        'background-image': '/images/drake.jpg'
+        'background-image': '/images/nyc_nathan.jpg'
       })
     .selector('#blog')
       .css({
@@ -45,11 +39,16 @@ var cy = cytoscape({
       })
     .selector('#setation')
       .css({
-        'visibility' : 'hidden'
+        // 'visibility' : 'hidden'
       })
     .selector('#reactto')
       .css({
-        'visibility' : 'hidden'
+        // 'visibility' : 'hidden'
+      })
+    .selector('#WhereisDrake')
+      .css({
+        // 'visibility' : 'hidden'
+        'background-image' : '/images/drake.jpg'
       }),
   
   elements: {
@@ -58,14 +57,16 @@ var cy = cytoscape({
       { data: { id: 'projects'} },
       { data: { id: 'blog' } },
       { data: { id: 'resume'}},
-      { data: { id: 'setation', href: 'http://www.vbi.vt.edu'}},
+      { data: { id: 'setation', lightbox : true}},
       { data: { id: 'reactto'}},
+      { data: { id: 'WhereisDrake'}},
     ],
     edges: [
       { data: {source: 'about', target: 'projects' } },
       { data: {source: 'about', target: 'blog' } },
       { data: {source: 'projects', target: 'setation' } },
       { data: {source: 'projects', target: 'reactto' } },
+      { data: {source: 'projects', target: 'WhereisDrake' } },
       { data: {source: 'about', target: 'resume' } },
 
     ]
@@ -85,17 +86,31 @@ var cy = cytoscape({
 cy.userZoomingEnabled( false );
 cy.userPanningEnabled( false );
 
+// Light up on mouse over
+cy.on('mouseover', 'node', function(){
+    this.css('border-color', '#98FFFB');
+})
 
+// Return to original color on mouse out
+cy.on('mouseout', 'node', function(){
+  this.css('border-color', '#000');
+})
 
+// ON node clicked
 cy.on('tap', 'node', function(){
 
-  var secondLevelEdges = cy.elements('edge[source!="about"]');
-  var secondLevelNodes = secondLevelEdges.targets();
-    if (secondLevelNodes != null){
-    secondLevelNodes.css('visibility', 'hidden');
-  }
 
-  showChildren(this);
+if(this.data('lightbox') != null) {
+  showLightbox(this);
+}
+
+  // var secondLevelEdges = cy.elements('edge[source!="about"]');
+  // var secondLevelNodes = secondLevelEdges.targets();
+  //   if (secondLevelNodes != null){
+  //   secondLevelNodes.css('visibility', 'hidden');
+  // }
+
+  // showChildren(this);
 
 }); // on tap
 
@@ -109,4 +124,36 @@ function showChildren(node)
     connectedNodes.css('visibility', 'visible');
   }
 
+}
+
+function showLightbox(node)
+{
+  var lightBox = $('#lightbox'),
+      lightBoxContent = $('#lb-content');
+
+  lightBox.fadeIn(function() {
+      lightBoxContent.show();                               
+  });
+
+  var viewWidth = $(window).width(),
+      lbContentMargin = viewWidth * 0.05;
+
+  lightBoxContent
+    .css({
+        'left' : lbContentMargin,
+        'top' : $(window).scrollTop() + 50 + 'px'
+    });
+
+
+    $('#lb-close').click(removeLightbox);
+}
+
+
+function removeLightbox()
+{
+    var lightBox = $('#lightbox'),
+      lightBoxContent = $('#lb-content');
+
+    lightBox.hide();
+    lightBoxContent.hide();
 }
