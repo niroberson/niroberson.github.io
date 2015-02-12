@@ -2,13 +2,11 @@
 #graph-menu {
 	  height: 100%;
 	  width: 100%;
-	  position: absolute;
+	  position: fixed;
 	  background-color: #292929;
 	  left: 0;
 	  top: 0;
 }
-
-
 #lightbox {
     position: fixed;
     top: 0;
@@ -20,10 +18,10 @@
     text-align: center;
     display: none;
 }  
-#lb-content {
+.lb-content {
     color: #222;
     height: 90%;
-    width: 90%;
+    width: 80%;
     border: 16px solid #222;
     background-color: #fff;
     position: absolute;

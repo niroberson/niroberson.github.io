@@ -27,7 +27,6 @@ var cy = cytoscape({
     .selector('#projects')
       .css({
         'background-image': 'https://farm8.staticflickr.com/7272/7633179468_3e19e45a0c_b.jpg',
-
       })
     .selector('#about')
       .css({
@@ -45,6 +44,10 @@ var cy = cytoscape({
       .css({
         // 'visibility' : 'hidden'
       })
+    .selector('#LinkedIn')
+      .css({
+        'background-image' : '/images/linkedin-logo.png'
+      })
     .selector('#WhereisDrake')
       .css({
         // 'visibility' : 'hidden'
@@ -57,12 +60,14 @@ var cy = cytoscape({
       { data: { id: 'projects'} },
       { data: { id: 'blog' } },
       { data: { id: 'resume'}},
-      { data: { id: 'setation', lightbox : true}},
+      { data: { id: 'setation', lightbox : '#lightbox-setation'}},
       { data: { id: 'reactto'}},
-      { data: { id: 'WhereisDrake'}},
+      { data: { id: 'WhereisDrake', href: 'http://www.whereisdrake.com'}},
+      { data: { id: 'LinkedIn', href: 'https://www.linkedin.com/in/nathanrobers'}},
     ],
     edges: [
       { data: {source: 'about', target: 'projects' } },
+      { data: {source: 'about', target: 'LinkedIn' } },
       { data: {source: 'about', target: 'blog' } },
       { data: {source: 'projects', target: 'setation' } },
       { data: {source: 'projects', target: 'reactto' } },
@@ -73,12 +78,16 @@ var cy = cytoscape({
   },
   
   layout: {
-    name: 'breadthfirst',
+    name: 'concentric',
     directed: true,
-    padding: 10,
+    padding: 50,
     animate:true,
     animationDuration: 500,
-    circle: false
+    avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
+    minNodeSpacing: 70, // min spacing between outside of nodes (used for radius adjustment)
+    concentric: function(){ // returns numeric value for each node, placing higher nodes in levels towards the centre
+    return this.degree();
+    },
   },
 
 }); // cy init
@@ -99,6 +108,13 @@ cy.on('mouseout', 'node', function(){
 // ON node clicked
 cy.on('tap', 'node', function(){
 
+if(this.data('href') != null) {
+  try { // your browser may block popups
+    window.open( this.data('href') );
+  } catch(e){ // fall back on url change
+    window.location.href = this.data('href'); 
+  } 
+}
 
 if(this.data('lightbox') != null) {
   showLightbox(this);
@@ -129,7 +145,7 @@ function showChildren(node)
 function showLightbox(node)
 {
   var lightBox = $('#lightbox'),
-      lightBoxContent = $('#lb-content');
+      lightBoxContent = $(node.data('lightbox'));
 
   lightBox.fadeIn(function() {
       lightBoxContent.show();                               
@@ -144,16 +160,8 @@ function showLightbox(node)
         'top' : $(window).scrollTop() + 50 + 'px'
     });
 
-
-    $('#lb-close').click(removeLightbox);
-}
-
-
-function removeLightbox()
-{
-    var lightBox = $('#lightbox'),
-      lightBoxContent = $('#lb-content');
-
-    lightBox.hide();
-    lightBoxContent.hide();
+    $('#lb-close').click(function(){
+      lightBox.hide(); 
+      lightBoxContent.hide();
+    });
 }
