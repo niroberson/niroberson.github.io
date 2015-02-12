@@ -7,7 +7,7 @@
 	  left: 0;
 	  top: 0;
 }
-#lightbox {
+.lightbox {
     position: fixed;
     top: 0;
     left: 0;
@@ -29,8 +29,9 @@
     padding-top: 10px;
     border-radius: 4px;
     display: none;
+    z-index : 1;
 }
-#lb-close {
+.lb-close {
     display: block;
     height: 22px;
     width: 25px;

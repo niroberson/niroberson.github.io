@@ -56,7 +56,7 @@ var cy = cytoscape({
   
   elements: {
     nodes: [
-      { data: { id: 'about'} },
+      { data: { id: 'about', lightbox : '#lightbox-about'} },
       { data: { id: 'projects'} },
       { data: { id: 'blog' } },
       { data: { id: 'resume'}},
@@ -144,23 +144,20 @@ function showChildren(node)
 
 function showLightbox(node)
 {
-  var lightBox = $('#lightbox'),
+  var lightBox = $('.lightbox'),
       lightBoxContent = $(node.data('lightbox'));
 
   lightBox.fadeIn(function() {
       lightBoxContent.show();                               
   });
 
-  var viewWidth = $(window).width(),
-      lbContentMargin = viewWidth * 0.05;
-
   lightBoxContent
     .css({
-        'left' : lbContentMargin,
+        'left' : $(window).width() * 0.05,
         'top' : $(window).scrollTop() + 50 + 'px'
     });
 
-    $('#lb-close').click(function(){
+    $('.lb-close').click(function(){
       lightBox.hide(); 
       lightBoxContent.hide();
     });
