@@ -40,9 +40,10 @@ var cy = cytoscape({
       .css({
         // 'visibility' : 'hidden'
       })
-    .selector('#reactto')
+    .selector('#SKN')
       .css({
         // 'visibility' : 'hidden'
+        'background-image' : '/images/skn_medical.png'
       })
     .selector('#LinkedIn')
       .css({
@@ -61,7 +62,7 @@ var cy = cytoscape({
       { data: { id: 'blog' } },
       { data: { id: 'resume'}},
       { data: { id: 'setation', lightbox : '#lightbox-setation'}},
-      { data: { id: 'reactto'}},
+      { data: { id: 'SKN'}},
       { data: { id: 'WhereisDrake', href: 'http://www.whereisdrake.com'}},
       { data: { id: 'LinkedIn', href: 'https://www.linkedin.com/in/nathanrobers'}},
     ],
@@ -70,7 +71,7 @@ var cy = cytoscape({
       { data: {source: 'about', target: 'LinkedIn' } },
       { data: {source: 'about', target: 'blog' } },
       { data: {source: 'projects', target: 'setation' } },
-      { data: {source: 'projects', target: 'reactto' } },
+      { data: {source: 'projects', target: 'SKN' } },
       { data: {source: 'projects', target: 'WhereisDrake' } },
       { data: {source: 'about', target: 'resume' } },
 
