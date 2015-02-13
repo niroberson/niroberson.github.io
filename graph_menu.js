@@ -59,7 +59,7 @@ var cy = cytoscape({
     nodes: [
       { data: { id: 'about', lightbox : '#lightbox-about'} },
       { data: { id: 'projects'} },
-      { data: { id: 'blog' } },
+      { data: { id: 'blog', href: 'https://niroberson.wordpress.com' } },
       { data: { id: 'resume'}},
       { data: { id: 'setation', lightbox : '#lightbox-setation'}},
       { data: { id: 'SKN'}},
