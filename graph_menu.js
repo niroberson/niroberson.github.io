@@ -49,6 +49,10 @@ var cy = cytoscape({
       .css({
         'background-image' : '/images/linkedin-logo.png'
       })
+    .selector('#Github')
+      .css({
+        'background-image' : '/images/git.png'
+      })
     .selector('#WhereisDrake')
       .css({
         // 'visibility' : 'hidden'
@@ -65,12 +69,15 @@ var cy = cytoscape({
       { data: { id: 'SKN'}},
       { data: { id: 'WhereisDrake', href: 'http://www.whereisdrake.com'}},
       { data: { id: 'LinkedIn', href: 'https://www.linkedin.com/in/nathanrobers'}},
+      { data: { id: 'Github', href: 'https://www.github.com/niroberson'}},
+
     ],
     edges: [
       { data: {source: 'about', target: 'projects' } },
       { data: {source: 'about', target: 'LinkedIn' } },
       { data: {source: 'about', target: 'blog' } },
       { data: {source: 'projects', target: 'setation' } },
+      { data: {source: 'projects', target: 'Github' } },
       { data: {source: 'projects', target: 'SKN' } },
       { data: {source: 'projects', target: 'WhereisDrake' } },
       { data: {source: 'about', target: 'resume' } },
