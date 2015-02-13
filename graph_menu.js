@@ -34,7 +34,7 @@ var cy = cytoscape({
       })
     .selector('#blog')
       .css({
-        'background-image': 'https://farm4.staticflickr.com/3063/2751740612_af11fb090b_b.jpg'
+        'background-image': '/images/wordpress-logo.png'
       })
     .selector('#setation')
       .css({
