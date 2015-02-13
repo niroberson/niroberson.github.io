@@ -77,7 +77,7 @@ var cy = cytoscape({
       { data: {source: 'about', target: 'LinkedIn' } },
       { data: {source: 'about', target: 'blog' } },
       { data: {source: 'projects', target: 'setation' } },
-      { data: {source: 'projects', target: 'Github' } },
+      { data: {source: 'about', target: 'Github' } },
       { data: {source: 'projects', target: 'SKN' } },
       { data: {source: 'projects', target: 'WhereisDrake' } },
       { data: {source: 'about', target: 'resume' } },
