@@ -89,8 +89,7 @@ var cy = cytoscape({
     name: 'concentric',
     directed: true,
     padding: 50,
-    animate:true,
-    animationDuration: 500,
+    animate:false,
     avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
     minNodeSpacing: 70, // min spacing between outside of nodes (used for radius adjustment)
     concentric: function(){ // returns numeric value for each node, placing higher nodes in levels towards the centre
