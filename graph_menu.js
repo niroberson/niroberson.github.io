@@ -26,7 +26,7 @@ var cy = cytoscape({
       })
     .selector('#projects')
       .css({
-        'background-image': 'https://farm8.staticflickr.com/7272/7633179468_3e19e45a0c_b.jpg',
+        //'visibility' : 'hidden',
       })
     .selector('#about')
       .css({
@@ -38,12 +38,11 @@ var cy = cytoscape({
       })
     .selector('#setation')
       .css({
-        // 'visibility' : 'hidden'
+        'visibility' : 'hidden'
       })
     .selector('#SKN')
       .css({
-        // 'visibility' : 'hidden'
-        'background-image' : '/images/skn_medical.png'
+        'visibiity' : 'hidden',
       })
     .selector('#LinkedIn')
       .css({
@@ -55,18 +54,15 @@ var cy = cytoscape({
       })
     .selector('#WhereisDrake')
       .css({
-        // 'visibility' : 'hidden'
+        'visibility' : 'hidden',
         'background-image' : '/images/drake.jpg'
       }),
   
   elements: {
     nodes: [
       { data: { id: 'about', lightbox : '#lightbox-about'} },
-      { data: { id: 'projects'} },
+      { data: { id: 'projects', lightbox : '#lightbox-projects'}},
       { data: { id: 'blog', href: 'https://niroberson.wordpress.com' } },
-      { data: { id: 'resume'}},
-      { data: { id: 'setation', lightbox : '#lightbox-setation'}},
-      { data: { id: 'SKN'}},
       { data: { id: 'WhereisDrake', href: 'http://www.whereisdrake.com'}},
       { data: { id: 'LinkedIn', href: 'https://www.linkedin.com/in/nathanrobers'}},
       { data: { id: 'Github', href: 'https://www.github.com/niroberson'}},
@@ -78,18 +74,16 @@ var cy = cytoscape({
       { data: {source: 'about', target: 'blog' } },
       { data: {source: 'projects', target: 'setation' } },
       { data: {source: 'about', target: 'Github' } },
-      { data: {source: 'projects', target: 'SKN' } },
       { data: {source: 'projects', target: 'WhereisDrake' } },
-      { data: {source: 'about', target: 'resume' } },
 
     ]
   },
   
   layout: {
-    name: 'concentric',
+    name: 'breadthfirst',
     directed: true,
     padding: 50,
-    animate:false,
+    animate:true,
     avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
     minNodeSpacing: 70, // min spacing between outside of nodes (used for radius adjustment)
     concentric: function(){ // returns numeric value for each node, placing higher nodes in levels towards the centre
