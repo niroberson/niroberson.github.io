@@ -12,17 +12,17 @@ var cy = cytoscape({
         'width': 50,
         'background-fit': 'cover',
         'content': 'data(id)',
-        'border-color': '#000',
+        'border-color': '#2185C5',
         'border-width': 3,
         'border-opacity': 0.8,
-        'color': '#24BF0F'
+        'color': '#FFF6E5'
       })
     .selector('edge')
       .css({
         'width': 2,
         'target-arrow-shape': 'triangle',
-        'line-color': '#ffaaaa',
-        'target-arrow-color': '#ffaaaa'
+        'line-color': '#7ECEFD',
+        'target-arrow-color': '#FF7F66'
       })
     .selector('#projects')
       .css({
@@ -72,7 +72,6 @@ var cy = cytoscape({
       { data: {source: 'about', target: 'projects' } },
       { data: {source: 'about', target: 'LinkedIn' } },
       { data: {source: 'about', target: 'blog' } },
-      { data: {source: 'projects', target: 'setation' } },
       { data: {source: 'about', target: 'Github' } },
       { data: {source: 'projects', target: 'WhereisDrake' } },
 
@@ -103,7 +102,7 @@ cy.on('mouseover', 'node', function(){
 
 // Return to original color on mouse out
 cy.on('mouseout', 'node', function(){
-  this.css('border-color', '#000');
+  this.css('border-color', '#FCFFF5');
 })
 
 // ON node clicked
