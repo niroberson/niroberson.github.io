@@ -107,7 +107,9 @@ cy.on('tap', 'node', function(){
       window.location.href = this.data('href'); 
     } 
   }
-  else(this.data('lightbox') != null) {
+  
+  if(this.data('lightbox') != null) 
+  {
     showLightbox(this);
   }
   else
