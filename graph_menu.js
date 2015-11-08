@@ -24,17 +24,18 @@ var cy = cytoscape({
         'line-color': '#7ECEFD',
         'target-arrow-color': '#FF7F66'
       })
-    .selector('#projects')
+    .selector('#Projects')
       .css({
         //'visibility' : 'hidden',
       })
-    .selector('#about')
+    .selector('#About')
       .css({
         'background-image': '/images/nyc_nathan.jpg'
       })
-    .selector('#blog')
+    .selector('#Blog')
       .css({
-        'background-image': '/images/wordpress-logo.png'
+        'background-image': '/images/wordpress-logo.png',
+        'visibility':'hidden'
       })
     .selector('#setation')
       .css({
@@ -51,19 +52,13 @@ var cy = cytoscape({
     .selector('#Github')
       .css({
         'background-image' : '/images/git.png'
-      })
-    .selector('#WhereisDrake')
-      .css({
-        'visibility' : 'hidden',
-        'background-image' : '/images/drake.jpg'
       }),
   
   elements: {
     nodes: [
-      { data: { id: 'about', lightbox : '#lightbox-about'} },
-      { data: { id: 'projects', lightbox : '#lightbox-projects'}},
-      { data: { id: 'blog', href: 'https://niroberson.wordpress.com' } },
-      { data: { id: 'WhereisDrake', href: 'http://www.whereisdrake.com'}},
+      { data: { id: 'About', lightbox : '#lightbox-about'} },
+      { data: { id: 'Projects', lightbox : '#lightbox-projects'}},
+      { data: { id: 'Blog', href: 'https://niroberson.wordpress.com' } },
       { data: { id: 'LinkedIn', href: 'https://www.linkedin.com/in/nathanrobers'}},
       { data: { id: 'Github', href: 'https://www.github.com/niroberson'}},
 
