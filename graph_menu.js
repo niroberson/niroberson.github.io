@@ -149,12 +149,19 @@ function toggleChildren(node)
 {
   var connectedEdges = node.connectedEdges();
   var connectedNodes = connectedEdges.connectedNodes();
+
+  // Print each connected node
+  for (iNode = 0; iNode < connectedNodes.length; iNode++) {
+    console.log(connectedNodes[iNode]);
+  }
+
+
   if (connectedNodes != null){
     if (connectedNodes.visible())
       {
         connectedNodes.css('visibility', 'hidden');
       }
-      else {
+    else {
         connectedNodes.css('visibility', 'visible');
       }
   }
