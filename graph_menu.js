@@ -76,8 +76,6 @@ var cy = cytoscape({
 
   ],
   
-    
-  
   elements: {
     nodes: [
       { data: { id: 'About', name:'Explore'} },
@@ -102,22 +100,22 @@ var cy = cytoscape({
     padding: 50,
     animate:true,
     avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
-    minNodeSpacing: 50, // min spacing between outside of nodes (used for radius adjustment)
+    minNodeSpacing: 25, // min spacing between outside of nodes (used for radius adjustment)
   },
 
-headless: false,
-zoomingEnabled: false,
-userZoomingEnabled: false,
-panningEnabled: false,
-userPanningEnabled: false,
-styleEnabled: true,
-boxSelectionEnabled: false,
-selectionType: 'single',
-touchTapThreshold: 8,
-desktopTapThreshold: 4,
-autolock: false,
-autoungrabify: true,
-autounselectify: true
+  headless: false,
+  zoomingEnabled: false,
+  userZoomingEnabled: false,
+  panningEnabled: false,
+  userPanningEnabled: false,
+  styleEnabled: true,
+  boxSelectionEnabled: false,
+  selectionType: 'single',
+  touchTapThreshold: 8,
+  desktopTapThreshold: 4,
+  autolock: false,
+  autoungrabify: true,
+  autounselectify: true
 }); // cy init
 
 // Light up on mouse over
@@ -159,14 +157,7 @@ function toggleChildren(node)
   var connectedEdges = node.connectedEdges();
   var connectedNodes = connectedEdges.connectedNodes();
   if (connectedNodes != null){
-    console.log(connectedNodes.visible())
-    for (iNode = 0; iNode < connectedNodes.length; iNode++){
-      if (connectedNodes[iNode].visible()){
-        connectedNodes[iNode].css('visibility', 'hidden');
-      }
-      else{
         connectedNodes.css('visibility', 'visible');
-      }
     }
   }
 }
