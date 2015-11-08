@@ -37,11 +37,14 @@ var cy = cytoscape({
       .css({
         'background-image': '/images/wordpress-logo.png',
         'visibility':'hidden',
-        'expand':false
       })
     .selector('#LinkedIn')
       .css({
         'background-image' : '/images/linkedin-logo.png',
+        'visibility' : 'hidden',
+      })
+    .selector('#Books')
+      .css({
         'visibility' : 'hidden',
       })
     .selector('#Github')
@@ -96,22 +99,21 @@ cy.on('mouseout', 'node', function(){
 
 // ON node clicked
 cy.on('tap', 'node', function(){
-
-if(this.data('href') != null) {
-  try { // your browser may block popups
-    window.open( this.data('href') );
-  } catch(e){ // fall back on url change
-    window.location.href = this.data('href'); 
-  } 
-}
-
-if(this.data('lightbox') != null) {
-  showLightbox(this);
-}
-else
-{
-  toggleChildren(this);
-}
+  // Do something with the node
+  if(this.data('href') != null) {
+    try { // your browser may block popups
+      window.open( this.data('href') );
+    } catch(e){ // fall back on url change
+      window.location.href = this.data('href'); 
+    } 
+  }
+  else(this.data('lightbox') != null) {
+    showLightbox(this);
+  }
+  else
+  {
+    toggleChildren(this);
+  }
 
 }); // on tap
 
@@ -122,10 +124,8 @@ function toggleChildren(node)
   var connectedEdges = node.connectedEdges();
   var connectedNodes = connectedEdges.connectedNodes();
   if (connectedNodes != null){
-    console.log(connectedNodes.css)
     connectedNodes.css('visibility', 'visible');
   }
-
 }
 
 function showLightbox(node)
