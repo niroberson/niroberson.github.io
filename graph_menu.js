@@ -71,8 +71,9 @@ var cy = cytoscape({
   },
   
   layout: {
-    name: 'grid',
+    name: 'breadthfirst',
     fit: 'true',
+    directed: 'true',
     padding: 50,
     animate:true,
     avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
@@ -91,21 +92,18 @@ touchTapThreshold: 8,
 desktopTapThreshold: 4,
 autolock: false,
 autoungrabify: true,
-autounselectify: true,
- hideEdgesOnViewport: true,
-  hideLabelsOnViewport: true,
-
+autounselectify: true
 }); // cy init
 
-// Light up on mouse over
-cy.on('mouseover', 'node', function(){
-    this.css('border-color', '#98FFFB');
-})
+// // Light up on mouse over
+// cy.on('mouseover', 'node', function(){
+//     this.css('border-color', '#98FFFB');
+// })
 
-// Return to original color on mouse out
-cy.on('mouseout', 'node', function(){
-  this.css('border-color', '#FCFFF5');
-})
+// // Return to original color on mouse out
+// cy.on('mouseout', 'node', function(){
+//   this.css('border-color', '#FCFFF5');
+// })
 
 // ON node clicked
 cy.on('tap', 'node', function(){
