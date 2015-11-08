@@ -46,7 +46,7 @@ var cy = cytoscape({
       })
     .selector('#Github')
       .css({
-        'background-image' : '/images/git.png'
+        'background-image' : '/images/git.png',
         'visibility' : 'hidden',
       }),
   
