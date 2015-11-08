@@ -26,8 +26,8 @@ var cy = cytoscape({
       })
     .selector('#Projects')
       .css({
-        //'visibility' : 'hidden',
-        // 'background-image':'/images/pod_cfd.PNG'
+        'visibility' : 'hidden',
+        'background-image':'/images/pod_cfd.PNG'
       })
     .selector('#About')
       .css({
@@ -36,20 +36,23 @@ var cy = cytoscape({
     .selector('#Blog')
       .css({
         'background-image': '/images/wordpress-logo.png',
-        'visibility':'hidden'
+        'visibility':'hidden',
+        'expand':false
       })
     .selector('#LinkedIn')
       .css({
-        'background-image' : '/images/linkedin-logo.png'
+        'background-image' : '/images/linkedin-logo.png',
+        'visibility' : 'hidden',
       })
     .selector('#Github')
       .css({
         'background-image' : '/images/git.png'
+        'visibility' : 'hidden',
       }),
   
   elements: {
     nodes: [
-      { data: { id: 'About', lightbox : '#lightbox-about'} },
+      { data: { id: 'Explore'} },
       { data: { id: 'Projects', lightbox : '#lightbox-projects'}},
       { data: { id: 'Blog', href: 'https://niroberson.wordpress.com' } },
       { data: { id: 'LinkedIn', href: 'https://www.linkedin.com/in/nathanrobers'}},
@@ -105,13 +108,13 @@ if(this.data('lightbox') != null) {
   showLightbox(this);
 }
 
-  // var secondLevelEdges = cy.elements('edge[source!="about"]');
-  // var secondLevelNodes = secondLevelEdges.targets();
-  //   if (secondLevelNodes != null){
-  //   secondLevelNodes.css('visibility', 'hidden');
-  // }
+  var secondLevelEdges = cy.elements('edge[source!="About"]');
+  var secondLevelNodes = secondLevelEdges.targets();
+    if (secondLevelNodes != null){
+    secondLevelNodes.css('visibility', 'hidden');
+  }
 
-  // showChildren(this);
+  showChildren(this);
 
 }); // on tap
 
