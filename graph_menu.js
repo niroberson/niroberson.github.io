@@ -79,8 +79,6 @@ var cy = cytoscape({
     minNodeSpacing: 50, // min spacing between outside of nodes (used for radius adjustment)
   },
 
-}); // cy init
-
 zoomingEnabled: false,
 userZoomingEnabled: false,
 panningEnabled: false,
@@ -93,6 +91,8 @@ desktopTapThreshold: 4,
 autolock: false,
 autoungrabify: false,
 autounselectify: false,
+
+}); // cy init
 
 // Light up on mouse over
 cy.on('mouseover', 'node', function(){
