@@ -57,6 +57,7 @@ var cy = cytoscape({
       { data: { id: 'Blog', name:'Blog', href: 'https://niroberson.wordpress.com' } },
       { data: { id: 'LinkedIn', name:'LinkedIn', href: 'https://www.linkedin.com/in/nathanrobers'}},
       { data: { id: 'Github', name:'Github', href: 'https://www.github.com/niroberson'}},
+      { data: { id: 'Books', name:'Reading List'}},
 
     ],
     edges: [
@@ -108,19 +109,19 @@ if(this.data('lightbox') != null) {
   showLightbox(this);
 }
 
-  var secondLevelEdges = cy.elements('edge[source!="About"]');
-  var secondLevelNodes = secondLevelEdges.targets();
-    if (secondLevelNodes != null){
-    secondLevelNodes.css('visibility', 'hidden');
-  }
+  // var secondLevelEdges = cy.elements('edge[source!="About"]');
+  // var secondLevelNodes = secondLevelEdges.targets();
+  //   if (secondLevelNodes != null){
+  //   secondLevelNodes.css('visibility', 'hidden');
+  // }
 
-  showChildren(this);
+  toggleChildren(this);
 
 }); // on tap
 
 }); // on dom ready
 
-function showChildren(node)
+function toggleChildren(node)
 {
   var connectedEdges = node.connectedEdges();
   var connectedNodes = connectedEdges.connectedNodes();
