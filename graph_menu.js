@@ -92,6 +92,8 @@ desktopTapThreshold: 4,
 autolock: false,
 autoungrabify: true,
 autounselectify: true,
+ hideEdgesOnViewport: true,
+  hideLabelsOnViewport: true,
 
 }); // cy init
 
