@@ -4,54 +4,79 @@ $(function(){ // on dom ready
   
 var cy = cytoscape({
   container: document.getElementById('graph-menu'),
-  
-  style: cytoscape.stylesheet()
-    .selector('node')
-      .css({
-        'height': 50,
-        'width': 50,
-        'background-fit': 'cover',
-        'content': 'data(name)',
-        'border-color': '#2185C5',
-        'border-width': 3,
-        'border-opacity': 0.8,
-        'color': '#FFF6E5'
-      })
-    .selector('edge')
-      .css({
+  style: [
+    {
+      selector: 'node',
+      style: {
+          'height': 50,
+          'width': 50,
+          'background-fit': 'cover',
+          'content': 'data(name)',
+          'border-color': '#2185C5',
+          'border-width': 3,
+          'border-opacity': 0.8,
+          'color': '#FFF6E5'
+        }
+      },
+
+    {
+      selector: 'edge'
+      style: {
         'width': 2,
         'target-arrow-shape': 'triangle',
         'line-color': '#7ECEFD',
         'target-arrow-color': '#FF7F66'
-      })
-    .selector('#Projects')
-      .css({
+      }
+    },
+    {
+      selector: '#Projects',
+      style: {
         'visibility' : 'hidden',
         'background-image':'/images/pod_cfd.PNG'
-      })
-    .selector('#About')
-      .css({
+      }
+    },
+
+    {
+      selector: '#About',
+      style: {
         'background-image': '/images/nyc_nathan.jpg'
-      })
-    .selector('#Blog')
-      .css({
+      }
+    },
+
+    {
+      selector: '#Blog',
+      style: {
         'background-image': '/images/wordpress-logo.png',
         'visibility':'hidden',
-      })
-    .selector('#LinkedIn')
-      .css({
+      }
+    },
+
+    {
+      selector: '#LinkedIn',
+      style: {
         'background-image' : '/images/linkedin-logo.png',
         'visibility' : 'hidden',
-      })
-    .selector('#Books')
-      .css({
+      }
+    },
+
+    {
+      selector: '#Books',
+      style: {
         'visibility' : 'hidden',
-      })
-    .selector('#Github')
-      .css({
+      }
+    },
+
+    {
+      selector :'#Github',
+      style: {
         'background-image' : '/images/git.png',
         'visibility' : 'hidden',
-      }),
+      }
+    }
+
+  ],
+  
+    
   
   elements: {
     nodes: [
@@ -95,15 +120,15 @@ autoungrabify: true,
 autounselectify: true
 }); // cy init
 
-// // Light up on mouse over
-// cy.on('mouseover', 'node', function(){
-//     this.css('border-color', '#98FFFB');
-// })
+// Light up on mouse over
+cy.on('mouseover', 'node', function(){
+    this.css('border-color', '#98FFFB');
+})
 
-// // Return to original color on mouse out
-// cy.on('mouseout', 'node', function(){
-//   this.css('border-color', '#FCFFF5');
-// })
+// Return to original color on mouse out
+cy.on('mouseout', 'node', function(){
+  this.css('border-color', '#FCFFF5');
+})
 
 // ON node clicked
 cy.on('tap', 'node', function(){
