@@ -60,13 +60,6 @@ var cy = cytoscape({
     },
 
     {
-      selector: '#Books',
-      style: {
-        'visibility' : 'hidden',
-      }
-    },
-
-    {
       selector :'#Github',
       style: {
         'background-image' : '/images/git.png',
@@ -83,7 +76,6 @@ var cy = cytoscape({
       { data: { id: 'Blog', name:'Blog', href: 'https://niroberson.wordpress.com' } },
       { data: { id: 'LinkedIn', name:'LinkedIn', href: 'https://www.linkedin.com/in/nathanrobers'}},
       { data: { id: 'Github', name:'Github', href: 'https://www.github.com/niroberson'}},
-      { data: { id: 'Books', name:'Reading List'}},
 
     ],
     edges: [
@@ -158,7 +150,13 @@ function toggleChildren(node)
   var connectedEdges = node.connectedEdges();
   var connectedNodes = connectedEdges.connectedNodes();
   if (connectedNodes != null){
+    if (connectedNodes.visible())
+      {
+        connectedNodes.css('visibility', 'hidden');
+      }
+      else {
         connectedNodes.css('visibility', 'visible');
+      }
   }
 }
 
