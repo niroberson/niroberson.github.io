@@ -27,6 +27,7 @@ var cy = cytoscape({
     .selector('#Projects')
       .css({
         //'visibility' : 'hidden',
+        'background-image':'/images/pod_cfd.png'
       })
     .selector('#About')
       .css({
@@ -36,14 +37,6 @@ var cy = cytoscape({
       .css({
         'background-image': '/images/wordpress-logo.png',
         'visibility':'hidden'
-      })
-    .selector('#setation')
-      .css({
-        'visibility' : 'hidden'
-      })
-    .selector('#SKN')
-      .css({
-        'visibiity' : 'hidden',
       })
     .selector('#LinkedIn')
       .css({
