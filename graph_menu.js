@@ -11,7 +11,7 @@ var cy = cytoscape({
         'height': 50,
         'width': 50,
         'background-fit': 'cover',
-        'content': 'data(id)',
+        'content': 'data(name)',
         'border-color': '#2185C5',
         'border-width': 3,
         'border-opacity': 0.8,
@@ -52,11 +52,11 @@ var cy = cytoscape({
   
   elements: {
     nodes: [
-      { data: { id: 'Explore'} },
-      { data: { id: 'Projects', lightbox : '#lightbox-projects'}},
-      { data: { id: 'Blog', href: 'https://niroberson.wordpress.com' } },
-      { data: { id: 'LinkedIn', href: 'https://www.linkedin.com/in/nathanrobers'}},
-      { data: { id: 'Github', href: 'https://www.github.com/niroberson'}},
+      { data: { id: 'About', name:'Explore'} },
+      { data: { id: 'Projects', name:'Projects', lightbox : '#lightbox-projects'}},
+      { data: { id: 'Blog', name:'Blog', href: 'https://niroberson.wordpress.com' } },
+      { data: { id: 'LinkedIn', name:'LinkedIn', href: 'https://www.linkedin.com/in/nathanrobers'}},
+      { data: { id: 'Github', name:'Github', href: 'https://www.github.com/niroberson'}},
 
     ],
     edges: [
