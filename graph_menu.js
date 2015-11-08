@@ -150,21 +150,8 @@ function toggleChildren(node)
   var connectedEdges = node.connectedEdges();
   var connectedNodes = connectedEdges.connectedNodes();
 
-  // Print each connected node
-  for (iNode = 0; iNode < connectedNodes.length; iNode++) {
-    console.log(connectedNodes[iNode]);
-  }
+  node.children().css('visibility', 'visible');
 
-
-  if (connectedNodes != null){
-    if (connectedNodes.visible())
-      {
-        connectedNodes.css('visibility', 'hidden');
-      }
-    else {
-        connectedNodes.css('visibility', 'visible');
-      }
-  }
 }
 
 function showLightbox(node)
