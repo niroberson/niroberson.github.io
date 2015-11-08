@@ -81,8 +81,18 @@ var cy = cytoscape({
 
 }); // cy init
 
-cy.userZoomingEnabled( false );
-cy.userPanningEnabled( false );
+zoomingEnabled: false,
+userZoomingEnabled: false,
+panningEnabled: false,
+userPanningEnabled: false,
+styleEnabled: true,
+boxSelectionEnabled: false,
+selectionType: 'single',
+touchTapThreshold: 8,
+desktopTapThreshold: 4,
+autolock: false,
+autoungrabify: false,
+autounselectify: false,
 
 // Light up on mouse over
 cy.on('mouseover', 'node', function(){
@@ -123,7 +133,14 @@ function toggleChildren(node)
   var connectedEdges = node.connectedEdges();
   var connectedNodes = connectedEdges.connectedNodes();
   if (connectedNodes != null){
-    connectedNodes.css('visibility', 'visible');
+    for (iNode = 0; i < connectedNodes.length; iNode++){
+      if (connectedNodes[iNode].visible()){
+        connectedNodes[iNode].css('visibility', 'hidden');
+      }
+      else{
+        connectedNodes.css('visibility', 'visible');
+      }
+    }
   }
 }
 
