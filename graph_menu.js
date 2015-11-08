@@ -150,7 +150,9 @@ function toggleChildren(node)
   var connectedEdges = node.connectedEdges();
   var connectedNodes = connectedEdges.connectedNodes();
 
-  node.children().css('visibility', 'visible');
+  var children = node.children()
+  console.log(children);
+  // .css('visibility', 'visible');
 
 }
 
