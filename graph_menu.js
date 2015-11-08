@@ -152,13 +152,13 @@ cy.on('tap', 'node', function(){
 
 }); // on dom ready
 
+
 function toggleChildren(node)
 {
   var connectedEdges = node.connectedEdges();
   var connectedNodes = connectedEdges.connectedNodes();
   if (connectedNodes != null){
         connectedNodes.css('visibility', 'visible');
-    }
   }
 }
 
