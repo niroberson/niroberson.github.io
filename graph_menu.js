@@ -108,14 +108,10 @@ if(this.data('href') != null) {
 if(this.data('lightbox') != null) {
   showLightbox(this);
 }
-
-  // var secondLevelEdges = cy.elements('edge[source!="About"]');
-  // var secondLevelNodes = secondLevelEdges.targets();
-  //   if (secondLevelNodes != null){
-  //   secondLevelNodes.css('visibility', 'hidden');
-  // }
-
+else
+{
   toggleChildren(this);
+}
 
 }); // on tap
 
@@ -126,6 +122,7 @@ function toggleChildren(node)
   var connectedEdges = node.connectedEdges();
   var connectedNodes = connectedEdges.connectedNodes();
   if (connectedNodes != null){
+    console.log(connectedNodes.css)
     connectedNodes.css('visibility', 'visible');
   }
 
