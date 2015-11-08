@@ -89,8 +89,8 @@ selectionType: 'single',
 touchTapThreshold: 8,
 desktopTapThreshold: 4,
 autolock: false,
-autoungrabify: false,
-autounselectify: false,
+autoungrabify: true,
+autounselectify: true,
 
 }); // cy init
 
@@ -133,7 +133,7 @@ function toggleChildren(node)
   var connectedEdges = node.connectedEdges();
   var connectedNodes = connectedEdges.connectedNodes();
   if (connectedNodes != null){
-    for (iNode = 0; i < connectedNodes.length; iNode++){
+    for (iNode = 0; iNode < connectedNodes.length; iNode++){
       if (connectedNodes[iNode].visible()){
         connectedNodes[iNode].css('visibility', 'hidden');
       }
