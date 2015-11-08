@@ -64,12 +64,9 @@ var cy = cytoscape({
 
     ],
     edges: [
-      { data: {source: 'about', target: 'projects' } },
-      { data: {source: 'about', target: 'LinkedIn' } },
-      { data: {source: 'about', target: 'blog' } },
-      { data: {source: 'about', target: 'Github' } },
-      { data: {source: 'projects', target: 'WhereisDrake' } },
-
+      { data: {source: 'About', target: 'Projects' } },
+      { data: {source: 'About', target: 'LinkedIn' } },
+      { data: {source: 'About', target: 'Github' } },
     ]
   },
   
