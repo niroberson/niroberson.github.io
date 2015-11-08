@@ -27,7 +27,7 @@ var cy = cytoscape({
     .selector('#Projects')
       .css({
         //'visibility' : 'hidden',
-        'background-image':'/images/pod_cfd.PNG'
+        // 'background-image':'/images/pod_cfd.PNG'
       })
     .selector('#About')
       .css({
