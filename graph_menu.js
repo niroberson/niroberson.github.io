@@ -20,7 +20,7 @@ var cy = cytoscape({
       },
 
     {
-      selector: 'edge'
+      selector: 'edge',
       style: {
         'width': 2,
         'target-arrow-shape': 'triangle',
