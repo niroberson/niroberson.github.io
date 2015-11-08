@@ -79,6 +79,7 @@ var cy = cytoscape({
     minNodeSpacing: 50, // min spacing between outside of nodes (used for radius adjustment)
   },
 
+headless: false,
 zoomingEnabled: false,
 userZoomingEnabled: false,
 panningEnabled: false,
