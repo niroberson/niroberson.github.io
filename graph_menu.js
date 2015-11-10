@@ -1,4 +1,4 @@
-$(function(){ // on dom ready
+document.addEventListener('DOMContentLoaded', function(){ // on dom ready
 
 // photos from flickr with creative commons license
   
@@ -8,8 +8,8 @@ var cy = cytoscape({
     {
       selector: 'node',
       style: {
-          'height': 50,
-          'width': 50,
+          'height': 100,
+          'width': 100,
           'background-fit': 'cover',
           'content': 'data(name)',
           'border-color': '#2185C5',
@@ -29,41 +29,41 @@ var cy = cytoscape({
       }
     },
     {
-      selector: '#Projects',
+      selector: '#projects',
       style: {
-        'visibility' : 'hidden',
-        'background-image':'/images/pod_cfd.PNG'
+        'background-image':'/images/pod_cfd.PNG',
+        'visibility':'hidden'
       }
     },
 
     {
-      selector: '#About',
+      selector: '#about',
       style: {
         'background-image': '/images/nyc_nathan.jpg'
       }
     },
 
     {
-      selector: '#Blog',
+      selector: '#blog',
       style: {
         'background-image': '/images/wordpress-logo.png',
-        'visibility':'hidden',
+        'visibility':'hidden'
       }
     },
 
     {
-      selector: '#LinkedIn',
+      selector: '#linkedIn',
       style: {
         'background-image' : '/images/linkedin-logo.png',
-        'visibility' : 'hidden',
+        'visibility':'hidden'
       }
     },
 
     {
-      selector :'#Github',
+      selector :'#github',
       style: {
         'background-image' : '/images/git.png',
-        'visibility' : 'hidden',
+        'visibility':'hidden'
       }
     }
 
@@ -71,40 +71,32 @@ var cy = cytoscape({
   
   elements: {
     nodes: [
-      { data: { id: 'About', name:'Explore'} },
-      { data: { id: 'Projects', name:'Projects', lightbox : '#lightbox-projects'}},
-      { data: { id: 'Blog', name:'Blog', href: 'https://niroberson.wordpress.com' } },
-      { data: { id: 'LinkedIn', name:'LinkedIn', href: 'https://www.linkedin.com/in/nathanrobers'}},
-      { data: { id: 'Github', name:'Github', href: 'https://www.github.com/niroberson'}},
+      { data: { id: 'about', name:'Explore'} },
+      { data: { id: 'projects', name:'Projects', lightbox : '#lightbox-projects'}},
+      { data: { id: 'blog', name:'Blog', href: 'https://niroberson.wordpress.com' } },
+      { data: { id: 'linkedIn', name:'LinkedIn', href: 'https://www.linkedin.com/in/nathanrobers'}},
+      { data: { id: 'github', name:'Github', href: 'https://www.github.com/niroberson'}},
 
     ],
     edges: [
-      { data: {source: 'About', target: 'Projects' } },
-      { data: {source: 'About', target: 'LinkedIn' } },
-      { data: {source: 'About', target: 'Github' } },
+      { data: {source: 'about', target: 'projects' } },
+      { data: {source: 'about', target: 'linkedIn' } },
+      { data: {source: 'about', target: 'github' } },
     ]
   },
   
   layout: {
-    name: 'breadthfirst',
+    name: 'circle',
     fit: 'true',
     directed: 'true',
     padding: 50,
-    animate:true,
-    avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
+    avoidOverlap: true,
     minNodeSpacing: 25, // min spacing between outside of nodes (used for radius adjustment)
   },
 
-  headless: false,
-  zoomingEnabled: false,
   userZoomingEnabled: false,
-  panningEnabled: false,
   userPanningEnabled: false,
-  styleEnabled: true,
   boxSelectionEnabled: false,
-  selectionType: 'single',
-  touchTapThreshold: 8,
-  desktopTapThreshold: 4,
   autolock: false,
   autoungrabify: true,
   autounselectify: true
@@ -149,10 +141,16 @@ function toggleChildren(node)
 {
   var connectedEdges = node.connectedEdges();
   var connectedNodes = connectedEdges.connectedNodes();
-
-  var children = node.children()
-  console.log(children);
-  // .css('visibility', 'visible');
+  if (connectedNodes!= null){
+      for (iNode=1; iNode<connectedNodes.length; iNode++){
+        if (connectedNodes[iNode].visible()) {
+         connectedNodes[iNode].css('visibility', 'hidden')
+        }
+        else {
+          connectedNodes[iNode].css('visibility', 'visible')
+        }
+      }
+  }
 
 }
 
